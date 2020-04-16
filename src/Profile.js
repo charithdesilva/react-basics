@@ -28,6 +28,10 @@ class Profile extends Component {
     this.props.history.push('/Profile/' + profileName);
   };
 
+  displayProfileWithBack = (name, title, profUrl) => {
+    return (<div>hello</div>)(this.displayProfile(name, title, profUrl));
+  };
+
   displayProfile = (name, title, profUrl) => {
     return (
       <div>
@@ -48,17 +52,24 @@ class Profile extends Component {
     return (
       <div>
         {console.log('Render >>' + JSON.stringify(this.props.employee))}
-        {this.state.passedName === '' || this.state.passedName === undefined
-          ? this.displayProfile(
-              this.state.name,
-              this.state.title,
-              this.state.profUrl
-            )
-          : this.displayProfile(
+        {this.state.passedName === '' || this.state.passedName === undefined ? (
+          this.displayProfile(
+            this.state.name,
+            this.state.title,
+            this.state.profUrl
+          )
+        ) : (
+          <div>
+            {this.displayProfile(
               this.props.employee.name,
               this.props.employee.title,
               this.props.employee.profUrl
             )}
+            <button onClick={this.props.history.push.bind(this, '/')}>
+              BACK
+            </button>
+          </div>
+        )}
       </div>
     );
   }

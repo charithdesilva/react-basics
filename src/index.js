@@ -3,17 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './Store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <MemoryRouter>
       <React.StrictMode>
         <App />
       </React.StrictMode>
-    </BrowserRouter>
+    </MemoryRouter>
   </Provider>,
   document.getElementById('root')
 );
